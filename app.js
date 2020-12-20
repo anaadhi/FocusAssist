@@ -23,18 +23,18 @@ const io = socket(server,{
 var room = "{rooms:[]}"
 
 app.get('/', (req, res) => {
-    res.render("home")
-})
-
-app.post('/',(req, res) => {
     var id = Math.floor(Math.random()*(99999-10000+1)+10000);
-    var pass = req.body.pass
-    res.cookie('token', pass)
+    res.cookie('token', id)
     res.redirect('/room/' + id)
 })
 
 app.get('/room/:id', (req, res) => {
-    res.render('room', {"id":req.params.id}); 
+    var token = req.cookies['token'];
+    if(token == req.params.id){
+        res.render('dashboard', {"id":req.params.id});
+    } else {
+        res.render('studentboard', {"id":req.params.id});
+    }
 })
 
 io.on('connection', (socket) => {
@@ -46,12 +46,10 @@ io.on('connection', (socket) => {
     });
     socket.on('details', (msg, room) => {
         socket.broadcast.emit('check',msg)
-        console.log(room)
     });
     socket.on('room', (id) => {
         id = Number(id)
         socket.join(id)
-        console.log(id)
     })
     socket.on('urls', (msg) => {
         room = msg.room
@@ -59,10 +57,21 @@ io.on('connection', (socket) => {
         socket.to(room).broadcast.emit('urlrec',msg);
     })
     socket.on('lost', (msg) => {
-        console.log(msg)
         room = msg.room
         room = Number(room)
         socket.to(room).broadcast.emit('end',msg.name);
+    })
+    socket.on('studs', (msg)=>{
+        room = msg.room
+        room = Number(room)
+        console.log(msg)
+        var newmsg = {'links':msg.urlbar,'studs':msg.studs, 'pog':msg.prog}
+        socket.to(room).broadcast.emit('students',newmsg);
+    })
+    socket.on('close', (msg) => {
+        room = Number(msg)
+        console.log(msg)
+        socket.to(room).broadcast.emit('endroom',msg);
     })
 });
 

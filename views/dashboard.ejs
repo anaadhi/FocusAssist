@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solidify - Home</title>
+    <script src="/socket/socket.io.js"></script>
+        <script>
+        var socket = io();
+        </script>
+    <link rel="stylesheet" href="https://use.typekit.net/zxg5lwy.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/all.css">
+</head>
+<body style="background-color: #dadfe7; overflow: hidden;">
+    
+    <main>
+        <nav>
+            <div class="navLeft">
+                <div class="roomName">
+                    <div class="logo">
+                        <div class="cirLog"></div>
+                    </div>
+                    <h2>Room abcdefghijklmno</h2>
+                </div>
+            </div>
+            <div class="navRight">
+                <div class="nData">
+                    <h2 class="blue">Meeting Link</h2>
+                    <h2 class="norm" id='urlbar'> https://localhost:<%= id %></h2>
+                    <i title="Copy Link" class="fas fa-clone" onclick="copylink()"></i>
+                </div>
+                <div class="nData">
+                    <h2 class="blue">Meeting ID</h2>
+                    <h2 class="norm" id="roomid"><%= id %></h2>
+                    <i title="Copy Link" class="fas fa-clone" onclick="copyid()"></i>
+                </div>
+            </div>
+        </nav>
+        <div class="main">
+            <div class="left">
+                <div class="mem">
+                    <div class="memLeft">
+                        <h2>Members:</h2>
+                        <h3>People Focused: 16/80</h3>
+                    </div>
+                    <div class="memRight">
+                        <h2>Status</h2>
+                    </div>
+                </div>
+                <div class="gr">
+                    <div class="grLine"></div><div class="units" id="units"><div class="unit"><h3>Andhi Bro</h3><div class="grCCont"><div class="grC un"></div></div></div></div>
+                </div>
+            </div>
+            <div class="right" id="right22">
+                <div class="meet">
+                    <div class="meetLeft">
+                        <div class="circont">
+                            <div class="inner">
+                                <h2 class="num" id="num">0%</h2>
+                            </div>
+                            <div class="circ">
+                                <div class="bar bLeft">
+                                    <div class="prog"></div>
+                                </div>
+                                <div class="bar bRight">
+                                    <div class="prog"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="meetRight">
+                        <h2>Meeting<br>Duration:</h2>
+                        <br>
+                        <h3>1 hour</h3>
+                        <div class="btns" style="transform: scale(0.8);">
+                            <button onclick="closeroom()" id="closeroom">Close Room</button>                
+                    </div>
+                    </div>
+                </div>
+                <form action="" class="allow" id="form">
+                    <input type="text" placeholder="Allow access to selected Websites" name="web" id="link">
+                    <button type="submit">Add Link</button>
+                </form>
+                <ul class="gr" id="gr2"><li id="n0" class="link">www.google.com</li></ul>
+                
+            </div>
+        </div>
+    </main> 
+    <input type="text" id="temp" style="display: none;">
+
+    <script src="/js/room.js"></script>
+    <script src="/js/index.js"></script>
+</body>
+</html>
