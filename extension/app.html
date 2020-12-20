@@ -2,16 +2,90 @@
     <head>
         
     </head>
-    <body style="width: 300px; height: 300px; text-align: center;" id="body">
-        <form style="position: relative; top:50%; transform: translateY(-50%);" id="form">
-            <h1 style="margin-top: 0; padding-top: 0;">Focus Mode</h1>
-            <h3>Id:</h3>
-            <input type="text" id="room">
-            <h3>Base Url:</h3>
-            <input type="text" id="base">
-            <h3>Name:</h3>
-            <input type="text" id="name"><br><br>
-            <input type="submit">
+    <style>
+        @font-face {
+  font-family: reg;
+  src: url("./fonts/Nunito-Regular.ttf");
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+  font-family: reg;
+  color: #4e4c4c;
+}
+::root {
+  --bla: #4e4c4c;
+  --w: #f9f9f9;
+  --b: #93b8ef;
+  --g: #9de5ad;
+}
+body {
+  background: #f9f9f9;
+  width: 300px;
+  height: 350px;
+  border-radius: 10px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+h1 {
+  text-align: center;
+  padding: 30px 0;
+}
+.input {
+  display: flex;
+  width: 100%;
+  margin: 10px 0;
+}
+.input h3 {
+  padding: 10px 10px;
+  background: #93b8ef;
+  color: #f9f9f9;
+  border-radius: 5px 0 0 5px;
+  width: 40%;
+  text-align: center;
+}
+input {
+  border: 1px #93b8ef solid;
+  border-radius: 0 5px 5px 0;
+  width: 60%;
+  padding: 0 10px;
+}
+.sub {
+  width: 100%;
+  text-align: center;
+}
+input[type="submit"] {
+  border: none;
+  background: #93b8ef;
+  color: #f9f9f9;
+  font-size: 20px;
+  padding: 10px 20px;
+}
+    </style>
+    <body id="body">
+        <form id="form">
+            <h1>Focus Mode</h1>
+            <div class="input">
+                <h3>Id:</h3>
+                <input type="text" id="room">
+            </div>
+            <div class="input">
+                <h3>Base Url:</h3>
+                <input type="text" id="base">
+            </div>
+            <div class="input">
+                <h3>Name:</h3>
+                <input type="text" id="name">
+            </div>
+            <br><br>
+            <div class="sub">
+                <input type="submit">
+            </div>
             <p id="error"></p>
         </form>
         <script src="connect.js"></script>
