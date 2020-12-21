@@ -37,6 +37,7 @@ socket.on('end', (msg) => {
 document.getElementById("form").addEventListener('submit', e => {
     e.preventDefault()
     var newlink = document.getElementById('link').value
+    var newlink = newlink.replace('http://','').replace('https://','').split(/[/?#]/)[0];
     var link = "<li id='n"+l+"' class='link'>"+newlink+"</li>"
     document.getElementById('gr2').innerHTML += link
     l = l + 1
